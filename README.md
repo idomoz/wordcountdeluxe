@@ -28,7 +28,7 @@ chmod +x setup.sh
 * The server will listen on port 80
 
 ## API
-* All endpoints expects json data.
+* All endpoints expect json data.
 ### /register  [POST]:
 * Receives:
 ```json
