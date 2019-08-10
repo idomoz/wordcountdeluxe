@@ -14,7 +14,7 @@ from collections import defaultdict
 client = MongoClient(host='mongo')
 db = client.wordcount
 app = Flask(__name__)
-recaptcha_secret = '<recaptcha_site_secret>'
+recaptcha_secret = '<recaptcha_secret_key>'
 hostname = '<example.com>'
 jwt_secret = '<jwt_secret>'
 
