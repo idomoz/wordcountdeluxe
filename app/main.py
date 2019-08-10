@@ -62,7 +62,7 @@ def authorized(func):
     return wrapper
 
 
-def throttling(amount=20, time_frame=60, success_key=None):
+def throttling(amount=20, time_frame=60):
     """
 (Denial-of-Service protection)
 Blocks an ip from accessing a method if it reaches the amount of requests in a given time frame.
@@ -70,7 +70,6 @@ The counter resets if the success key is inside the returned value from the meth
 The info is kept in an in-memory dictionary, so it resets between lambda instances.
     :param amount: the maximum amount of requests allowed for an ip per time_frame.
     :param time_frame: the time frame for the amount of requests (in seconds).
-    :param success_key: a value that is returned inside successful requests to the method.
     :return: 429 TOO_MANY_REQUESTS if ip is blocked or the value of the method if not.
     """
     access_cache = defaultdict(list)
@@ -89,11 +88,6 @@ The info is kept in an in-memory dictionary, so it resets between lambda instanc
             else:
                 access_data.append(time_now)
             result = func(*args, **kwargs)
-            try:
-                if success_key and success_key in result:
-                    access_cache.pop(request.remote_addr, None)
-            except TypeError:
-                pass
             return result
 
         return wrapper
