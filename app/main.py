@@ -87,8 +87,7 @@ The info is kept in an in-memory dictionary, so it resets between lambda instanc
                     access_data.remove(access_data[0])
             else:
                 access_data.append(time_now)
-            result = func(*args, **kwargs)
-            return result
+            return func(*args, **kwargs)
 
         return wrapper
 
