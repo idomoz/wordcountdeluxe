@@ -13,4 +13,5 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # run docker-compose
 sudo docker-compose up -d
-sudo docker restart ubuntu_backend_1 # to insure that backend starts after mongo finished initializing
+sudo docker restart backend # to insure that backend starts after mongo finished initializing
+echo "Setup done! Server is listening on 0.0.0.0:80"
